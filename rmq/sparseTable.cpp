@@ -1,4 +1,10 @@
-// Range Minimum Query using sparse table data structure
+/* Range Minimum Query using sparse table data structure
+	Sparse tables are good when the data is immutable (no updates) and the query is range min/max query
+	Preprocessing - O(nlogn)
+	Range Minimum/Maximum Queries - O(1)
+	Range Sum Queries - O(logn)
+	Update - Need to construct the sparse table again - O(nlogn)
+*/
 #include<bits/stdc++.h>
 #define lld long long
 #define ipv(v) for(lld i=0; i<v.size(); ++i) cin >> v[i]
@@ -28,6 +34,13 @@ vector<vector<lld>> buildSparseTable(const vector<lld> &arr) {
 // Range Minimum Query
 // Returns the minimum value between low and high inclusive
 lld rmq(const vector<vector<lld>> &sparse, lld low, lld high) {
+
+	if(low > high) {
+		lld temp = low;
+		low = high;
+		high = temp;
+	}
+	
 	lld len = high - low + 1;
 	lld k = log2(len);
 	return min(sparse[low][k], sparse[low + len - pow(2, k)][k]);

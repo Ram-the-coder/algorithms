@@ -1,4 +1,10 @@
-// Range Minimum Query using segment tree data structure
+/* Range Minimum Query using segment tree data structure
+	Segment Tree can handle updates efficiently unlike sparse table
+	Same comlexity for all types of queries
+	Preprocessing - O(n)
+	Query - O(logn)
+	Update - O(logn)
+*/
 #include<bits/stdc++.h>
 #define lld long long
 #define ipv(v) for(lld i=0; i<v.size(); ++i) cin >> v[i]
@@ -34,6 +40,12 @@ vector<lld> constructSegTree(const vector<lld> &arr) {
 }
 
 lld rmq(const vector<lld> &segTree, const lld qlow, const lld qhigh, lld low, lld high, lld pos) {
+
+	if(qlow > qhigh) {
+		lld temp = qlow;
+		qlow = qhigh;
+		qhigh = temp;
+	}
 
 	if(qlow <= low && qhigh >= high) return segTree[pos]; // Total Overlap
 
