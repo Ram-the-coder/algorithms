@@ -117,7 +117,7 @@ int main()
 	// Construct the Euler Tour
 	vector<lld> et = eulerTour(nodes[0]);
 
-	// Construct the segment tree for range minimum queries
+	// Construct the sparse table for range minimum queries
 	vector<vector<lld>> sparse = buildSparseTable(et);
 
 	// Perform the queries
