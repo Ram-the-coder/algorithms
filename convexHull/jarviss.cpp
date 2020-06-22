@@ -19,13 +19,6 @@
 #define COLLINEAR 0
 using namespace std;
 
-template <class T>
-void swap(vector<T> a, lld i, lld j) {
-	T temp = a[i];
-	a[i] = j;
-	a[j] = temp;
-}
-
 class Point {
 public:
 	lld x, y;
